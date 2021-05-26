@@ -33,18 +33,20 @@ $(function(){
         });
     };
 
+    //Метод регистрации пользователя
     let authUser = function() {
-        let name = prompt('Введите имя пользователя:');
+        let name = prompt('Введите, пожалуйста, своё имя:');
         userName = name;
         $.post('/api/users', {'name': name}, function(response){
             if(response.result) {
                 initChat();
             } else {
-                alert('Что-то пошло не так :(');
+                alert('Что-то пошло не так. :(');
             }
         });
     };
 
+    //Метод проверки авторизации пользователя
     let checkAuthStatus = function() {
         $.get('/api/auth', function(response){
             if(response.result) {
@@ -69,7 +71,7 @@ $(function(){
                 messagesList.append(messageItem);
                 $('.message-text').val('');
             } else {
-                alert('Что-то пошлло не так:');
+                alert('Что-то пошлло не так. :(');
             }
         });
     });
